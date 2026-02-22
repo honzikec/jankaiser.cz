@@ -35,11 +35,20 @@ export default function Intro() {
 
   // Individual text item
   const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
-      x: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
+      y: 0,
+      transition: { type: 'spring' as const, bounce: 0.4, duration: 1.0 }
+    }
+  };
+
+  const lineVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: { duration: 1.0, ease: "easeOut" as const }
     }
   };
 
@@ -75,51 +84,33 @@ export default function Intro() {
         <motion.div
           variants={textContainerVariants}
           initial="hidden"
-          animate="visible"
-          className="w-full flex flex-col items-center md:items-start z-20 pl-[70%] relative -top-[15%] gap-4"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.4 }}
+          className="w-full flex flex-col z-20 pl-[65%] relative -mt-[20vh] gap-2 md:gap-4"
         >
-          {/* Speech Bubble 1 */}
-          <motion.div variants={itemVariants} className="mb-2 self-start flex">
-            <div className="text-xl md:text-2xl font-bold bg-brand-blue text-white px-5 py-3 rounded-2xl rounded-bl-sm shadow-md inline-flex items-center">
-              Hello.
-            </div>
-          </motion.div>
+          <motion.h1 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-text tracking-tight drop-shadow-sm mb-1">
+            Hello.
+          </motion.h1>
 
-          {/* Speech Bubble 2 */}
-          <motion.div variants={itemVariants} className="mb-4 self-start flex">
-            <div className="text-xl md:text-2xl font-bold text-brand-text bg-white px-5 py-3 rounded-2xl rounded-bl-sm items-center">
-              My name is <span className="text-brand-blue">Jan</span>.
-            </div>
-          </motion.div>
+          <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-500 tracking-tight">
+            My name is <span className="text-brand-blue drop-shadow-sm">Jan</span>.
+          </motion.h2>
 
-          {/* Terminal/Tech Style Animation 3 */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5, duration: 0.1 }}
-            className="self-start flex"
-          >
-            <div className="font-mono text-lg md:text-xl text-brand-text bg-brand-bg px-4 py-2 rounded-md shadow-inner border border-brand-blue/10 flex items-center">
-              <span className="text-brand-blue font-bold mr-3">{'>'}</span>
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{
-                  delay: 2.6, // Start right after the container appears
-                  duration: 1.5,
-                  ease: "linear",
-                }}
-                className="overflow-hidden whitespace-nowrap inline-block"
-              >
-                And I <span className="font-semibold">make software</span>.
-              </motion.span>
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ repeat: Infinity, duration: 0.8 }}
-                className="inline-block w-2 bg-brand-blue ml-1 h-5"
-              />
-            </div>
-          </motion.div>
+          <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-brand-text mt-4 md:mt-6 tracking-tight">
+            And I <br className="md:hidden" /><span className="text-brand-blue relative inline-block drop-shadow-sm">
+              make software.
+              <svg className="absolute w-full h-3 -bottom-1 md:-bottom-2 left-0 text-brand-blue" viewBox="0 0 100 10" preserveAspectRatio="none">
+                <motion.path
+                  variants={lineVariants}
+                  d="M0 5 Q 50 10 100 5"
+                  stroke="currentColor"
+                  strokeWidth="5"
+                  fill="transparent"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </motion.h2>
         </motion.div>
       </div>
 
@@ -128,7 +119,8 @@ export default function Intro() {
         href="#skills"
         className="absolute z-20 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-brand-text/60 hover:text-brand-text transition-colors"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
         transition={{ delay: 1.5, duration: 1 }}
       >
         <span className="text-xs font-bold uppercase tracking-widest mb-1">Scroll Down</span>

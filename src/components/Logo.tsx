@@ -9,28 +9,28 @@ export default function Logo() {
     // Grey text on white background (last section)
     const textColor = useTransform(
         scrollYProgress,
-        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83],
-        ['#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f']
+        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83, 0.88, 0.91],
+        ['#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff']
     );
 
     // Also adapting the "7" icon lines
     const iconColorLight = useTransform(
         scrollYProgress,
-        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83],
-        ['#429ac2', '#ffffff', '#ffffff', '#429ac2', '#429ac2', '#ffffff', '#ffffff', '#429ac2']
+        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83, 0.88, 0.91],
+        ['#429ac2', '#ffffff', '#ffffff', '#429ac2', '#429ac2', '#ffffff', '#ffffff', '#429ac2', '#429ac2', '#ffffff']
     );
 
     const iconColorDark = useTransform(
         scrollYProgress,
-        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83],
-        ['#3886bc', '#ffffff', '#ffffff', '#3886bc', '#3886bc', '#ffffff', '#ffffff', '#3886bc']
+        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83, 0.88, 0.91],
+        ['#3886bc', '#ffffff', '#ffffff', '#3886bc', '#3886bc', '#ffffff', '#ffffff', '#3886bc', '#3886bc', '#ffffff']
     );
 
     // For the separator line
     const separatorColor = useTransform(
         scrollYProgress,
-        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83],
-        ['#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f']
+        [0.08, 0.10, 0.54, 0.58, 0.66, 0.70, 0.79, 0.83, 0.88, 0.91],
+        ['#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff']
     );
 
     return (
