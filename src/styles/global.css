@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: 'Inter', sans-serif;
+    --font-display: 'Outfit', sans-serif;
+
+    /* Original gray-ish background palette */
+    --color-brand-bg: #d5e2e2;
+
+    /* Brand colors from original */
+    --color-brand-blue: #0E87B5;
+    --color-brand-light: #93d9fe;
+    --color-brand-dark: #07678b;
+    --color-brand-accent: #187eb4;
+    --color-brand-text: #454646;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--color-brand-bg);
+    /* Reset colors to the original off-white/gray */
+    color: var(--color-brand-text);
+}
+
+body {
+    font-family: var(--font-sans);
+    overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+}

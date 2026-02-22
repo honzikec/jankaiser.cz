@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.tsx';
+import Intro from '../components/Intro.tsx';
+import Skills from '../components/Skills.tsx';
+import Summary from '../components/Summary.tsx';
+import SyntaxAgnostic from '../components/SyntaxAgnostic.tsx';
+import Experience from '../components/Experience.tsx';
+import Contact from '../components/Contact.tsx';
+---
+
+<Layout title="Jan Kaiser">
+	<Logo client:load />
+	<main class="relative w-full">
+		<Intro client:load />
+		<Skills client:load />
+		<Summary client:load />
+		<SyntaxAgnostic client:load />
+		<Experience client:load />
+		<Contact client:load />
+	</main>
+</Layout>
