@@ -38,6 +38,15 @@ export default function Experience() {
         }
     };
 
+    const lineVariants = {
+        hidden: { pathLength: 0, opacity: 0 },
+        visible: {
+            pathLength: 1,
+            opacity: 1,
+            transition: { duration: 1.0, ease: "easeOut" as const, delay: 0.8 }
+        }
+    };
+
     return (
         <section id="experience" className="relative w-full min-h-screen flex items-center justify-center bg-brand-bg overflow-hidden snap-start snap-always py-16">
 
@@ -54,14 +63,23 @@ export default function Experience() {
                     className="text-center mb-20 space-y-4"
                 >
                     <h2 className="text-3xl md:text-5xl font-bold text-brand-text drop-shadow-sm">
-                        I've worked with <span className="text-brand-blue relative inline-block">
-                            the best.
-                            <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-brand-bg to-brand-blue rounded-full opacity-60"></span>
+                        Here are some cool orgs I helped <span className="text-brand-blue relative inline-block">
+                            ship.
+                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-blue" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <motion.path
+                                    variants={lineVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: false, margin: "-100px" }}
+                                    d="M0 5 Q 50 10 100 5"
+                                    stroke="currentColor"
+                                    strokeWidth="5"
+                                    fill="transparent"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
                         </span>
                     </h2>
-                    <p className="text-slate-500 text-lg md:text-xl font-medium tracking-wide">
-                        And delivered some awesomeness over the years.
-                    </p>
                 </motion.div>
 
                 {/* Flex container mapping out the company logos, centered */}
