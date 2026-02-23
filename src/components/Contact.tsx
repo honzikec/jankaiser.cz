@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import ChatBubble from './ui/ChatBubble';
 
 const messageVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 30 },
@@ -51,16 +52,9 @@ export default function Contact() {
                     transition={{ staggerChildren: 0.4, delayChildren: 0.2 }}
                 >
                     {/* Received Message */}
-                    <motion.div
-                        variants={messageVariants}
-                        style={{ transformOrigin: 'bottom left' }}
-                        className="flex flex-col max-w-[85%] self-start items-start"
-                    >
-                        <span className="text-white/60 text-xs font-semibold mb-1 ml-2">Jan</span>
-                        <div className="px-5 py-3 text-[15px] md:text-lg leading-relaxed shadow-lg block bg-white/95 backdrop-blur-sm text-brand-dark rounded-2xl rounded-bl-sm font-medium">
-                            Hi this is Jan. Sounded interesting? Let's connect.
-                        </div>
-                    </motion.div>
+                    <ChatBubble variants={messageVariants} align="left" senderName="Jan">
+                        Hi this is Jan. Sounded interesting? Let's connect.
+                    </ChatBubble>
 
                     {/* Send Message (Form) */}
                     <motion.form

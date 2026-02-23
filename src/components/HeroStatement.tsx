@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import AnimatedUnderline from './ui/AnimatedUnderline';
 
-export default function Summary() {
+export default function HeroStatement() {
     // Explicit sequence timing optimized for human reading speed
     const headingVariants = {
         hidden: { opacity: 0, y: 30 },
@@ -8,15 +9,6 @@ export default function Summary() {
             opacity: 1,
             y: 0,
             transition: { type: "spring" as const, bounce: 0.4, duration: 1.0, delay: 0.1 }
-        }
-    };
-
-    const lineVariants = {
-        hidden: { pathLength: 0, opacity: 0 },
-        visible: {
-            pathLength: 1,
-            opacity: 1,
-            transition: { duration: 1.0, ease: "easeOut" as const, delay: 0.3 }
         }
     };
 
@@ -49,7 +41,7 @@ export default function Summary() {
     };
 
     return (
-        <section id="summary" className="relative w-full min-h-screen flex items-center justify-center bg-brand-bg overflow-hidden snap-start snap-always py-16">
+        <section id="statement" className="relative w-full min-h-screen flex items-center justify-center bg-brand-bg overflow-hidden snap-start snap-always py-16">
 
             {/* Background design elements */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] bg-brand-blue/5 rounded-full blur-[100px] pointer-events-none mix-blend-overlay"></div>
@@ -67,16 +59,7 @@ export default function Summary() {
                     >
                         When I say I <span className="text-brand-blue relative inline-block">
                             make software
-                            <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-blue" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                <motion.path
-                                    variants={lineVariants}
-                                    d="M0 5 Q 50 10 100 5"
-                                    stroke="currentColor"
-                                    strokeWidth="5"
-                                    fill="transparent"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
+                            <AnimatedUnderline delay={0.3} className="absolute w-full h-3 -bottom-1 left-0 text-brand-blue" />
                         </span>,
                     </motion.h2>
 

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
+import ChatBubble from './ui/ChatBubble';
 
 const messageVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 30 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, bounce: 0.4, duration: 0.7 } }
 };
 
-export default function SyntaxAgnostic() {
+export default function Agnostic() {
     return (
         <section id="agnostic" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden snap-start snap-always py-24 bg-[#0E87B5]">
             <div className="max-w-6xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center">
@@ -29,26 +30,13 @@ export default function SyntaxAgnostic() {
                     viewport={{ once: false, amount: 0.4 }}
                     transition={{ staggerChildren: 0.4, delayChildren: 0.2 }}
                 >
-                    <motion.div
-                        variants={messageVariants}
-                        style={{ transformOrigin: 'bottom left' }}
-                        className="flex flex-col max-w-[85%] self-start items-start"
-                    >
-                        <span className="text-white/60 text-xs font-semibold mb-1 ml-2">Client</span>
-                        <div className="px-5 py-3 text-[15px] md:text-lg leading-relaxed shadow-lg block bg-white/95 backdrop-blur-sm text-brand-dark rounded-2xl rounded-bl-sm font-medium">
-                            We have this legacy system. We need to automatically translate millions of lines of JavaScript business logic into Fortran to run on our mainframe computing cluster. Do you know Fortran?
-                        </div>
-                    </motion.div>
+                    <ChatBubble variants={messageVariants} align="left" senderName="Client">
+                        We have this legacy system. We need to automatically translate millions of lines of JavaScript business logic into Fortran to run on our mainframe computing cluster. Do you know Fortran?
+                    </ChatBubble>
 
-                    <motion.div
-                        variants={messageVariants}
-                        style={{ transformOrigin: 'bottom right' }}
-                        className="flex flex-col max-w-[85%] self-end items-end"
-                    >
-                        <div className="px-5 py-3 text-[15px] md:text-lg leading-relaxed shadow-lg block bg-black/15 backdrop-blur-md text-white rounded-2xl rounded-br-sm">
-                            No. But I'll have the compiler AST parser and a proof-of-concept transpiler ready by Tuesday.
-                        </div>
-                    </motion.div>
+                    <ChatBubble variants={messageVariants} align="right">
+                        No. But I'll have the compiler AST parser and a proof-of-concept transpiler ready by Tuesday.
+                    </ChatBubble>
                 </motion.div>
             </div>
         </section>

@@ -64,7 +64,7 @@ const messageVariants = {
     visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring", bounce: 0.4, duration: 0.7 } }
 };
 
-export default function Skills() {
+export default function Story() {
     const { scrollYProgress } = useScroll();
 
     // Parallax background transition to blue
@@ -75,7 +75,8 @@ export default function Skills() {
     );
 
     return (
-        <motion.div
+        <motion.section
+            id="story"
             style={{ backgroundColor }}
             className="w-full relative"
         >
@@ -129,6 +130,6 @@ export default function Skills() {
                     </div>
                 </section>
             ))}
-        </motion.div>
+        </motion.section>
     );
 }

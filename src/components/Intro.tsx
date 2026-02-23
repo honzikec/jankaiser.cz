@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
+import AnimatedUnderline from './ui/AnimatedUnderline';
 
 export default function Intro() {
   const { scrollY } = useScroll();
@@ -43,15 +44,6 @@ export default function Intro() {
     }
   };
 
-  const lineVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: { duration: 1.0, ease: "easeOut" as const }
-    }
-  };
-
   return (
     <section id="intro" className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-brand-bg snap-start snap-always">
 
@@ -86,7 +78,7 @@ export default function Intro() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.4 }}
-          className="w-full flex flex-col z-20 pl-[65%] relative -mt-[20vh] gap-2 md:gap-4"
+          className="w-full flex flex-col z-20 text-center sm:text-left sm:pl-[65%] relative -mt-[30vh] sm:-mt-[20vh] gap-2 md:gap-4"
         >
           <motion.h1 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-text tracking-tight drop-shadow-sm mb-1">
             Hello.
@@ -99,16 +91,7 @@ export default function Intro() {
           <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-brand-text mt-4 md:mt-6 tracking-tight">
             And I <br className="md:hidden" /><span className="text-brand-blue relative inline-block drop-shadow-sm">
               make software.
-              <svg className="absolute w-full h-3 -bottom-1 md:-bottom-2 left-0 text-brand-blue" viewBox="0 0 100 10" preserveAspectRatio="none">
-                <motion.path
-                  variants={lineVariants}
-                  d="M0 5 Q 50 10 100 5"
-                  stroke="currentColor"
-                  strokeWidth="5"
-                  fill="transparent"
-                  strokeLinecap="round"
-                />
-              </svg>
+              <AnimatedUnderline delay={2.5} />
             </span>
           </motion.h2>
         </motion.div>
@@ -116,7 +99,7 @@ export default function Intro() {
 
       {/* Scroll Down Indicator */}
       <motion.a
-        href="#skills"
+        href="#story"
         className="absolute z-20 bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center text-brand-text/60 hover:text-brand-text transition-colors"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

@@ -1,0 +1,44 @@
+services:
+  app:
+    container_name: jankaiser-app
+    build:
+      dockerfile: Dockerfile
+    restart: unless-stopped
+
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOST=0.0.0.0
+
+    networks:
+      - web_proxy
+
+    # Hardening the Node container behind the reverse proxy
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+    labels:
+      - "traefik.enable=true"
+      # Make Traefik always use the proxy network
+      - "traefik.docker.network=web_proxy"
+      # Route incoming traffic for the specified DOMAIN to this container
+      - "traefik.http.routers.jankaiser.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.jankaiser.entrypoints=websecure"
+      - "traefik.http.routers.jankaiser.tls.certresolver=myresolver"
+      - "traefik.http.services.jankaiser.loadbalancer.server.port=3000"
+
+    # Healthcheck using Node's built-in fetch
+    healthcheck:
+      test: [ "CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  web_proxy:
+    external: true
