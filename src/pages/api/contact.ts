@@ -15,8 +15,8 @@ export const POST: APIRoute = async ({ request }) => {
 
         const transporter = nodemailer.createTransport({
             host: "smtppro.zoho.eu",
-            port: 465,
-            secure: true, // true for 465, false for other ports
+            port: 587,
+            secure: false, // true for 465, false for other ports
             auth: {
                 user: import.meta.env.SMTP_USER,
                 pass: import.meta.env.SMTP_PASS,
