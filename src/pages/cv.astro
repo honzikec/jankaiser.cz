@@ -1,0 +1,560 @@
+---
+import cvData from "../data/cv.json";
+import CvLogo from "../components/CvLogo.astro";
+import "../styles/global.css";
+
+// Break into pages for A4 printing
+const escapeHtml = (value: string) =>
+    value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+
+const externalLinkHtml = (href: string, label: string) =>
+    `<a href="${escapeHtml(href)}" class="text-brand no-underline">${escapeHtml(
+        label
+    )}</a>`;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>CV - {cvData.header.name} {cvData.header.surname}</title>
+        <style>
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            body {
+                margin: 0;
+                background: white;
+                color: var(--color-brand-text);
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                font-family: var(--font-sans);
+            }
+            .page {
+                width: 210mm;
+                height: 297mm;
+                padding: 20mm;
+                box-sizing: border-box;
+                page-break-after: always;
+                position: relative;
+                background: white;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            .font-display {
+                font-family: var(--font-display);
+            }
+
+            .text-brand {
+                color: var(--color-brand-blue);
+            }
+            .personal-data :global(a.text-brand.no-underline) {
+                color: var(--color-brand-blue);
+                text-decoration: none;
+            }
+            .bg-brand {
+                background-color: var(--color-brand-blue);
+            }
+            .bg-brand-light {
+                background-color: var(--color-brand-bg);
+            }
+
+            /* Header */
+            .cv-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 40px;
+            }
+            .cv-header-logo {
+                font-size: 24px;
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+            .cv-header-logo span {
+                font-weight: 600;
+            }
+            .cv-header-title {
+                font-size: 24px;
+                font-weight: 100;
+                color: var(--color-brand-blue);
+            }
+
+            /* Section Titles */
+            .section-title {
+                font-size: 16px;
+                font-weight: 400;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-bottom: 24px;
+                color: #888;
+            }
+            .section-title span {
+                font-weight: 700;
+                color: var(--color-brand-blue);
+            }
+
+            /* Personal Data Table */
+            .personal-data {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 12px;
+                margin-bottom: 40px;
+            }
+            .personal-data tr:nth-child(odd) {
+                background-color: #f0f0f0;
+            }
+            .personal-data td {
+                padding: 8px 12px;
+            }
+            .personal-data td:first-child {
+                font-weight: 700;
+                width: 150px;
+            }
+
+            /* Timeline */
+            .timeline {
+                position: relative;
+                margin-left: 140px;
+                padding-bottom: 20px;
+            }
+            .timeline-item {
+                position: relative;
+                margin-bottom: 24px;
+                min-height: 24px;
+            }
+            .timeline-item:not(:last-child)::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: -24px;
+                left: 20px;
+                width: 1px;
+                background-color: #93d9fe;
+                z-index: 1;
+            }
+            .timeline-date {
+                position: absolute;
+                left: -140px;
+                top: -8px;
+                width: 115px;
+                white-space: nowrap;
+                background-color: var(--color-brand-blue);
+                color: white;
+                font-size: 10px;
+                padding: 6px 10px;
+                text-align: right;
+                border-radius: 12px;
+                border-bottom-right-radius: 2px;
+            }
+            .timeline-icon {
+                position: absolute;
+                left: 7px;
+                top: -6px;
+                width: 28px;
+                height: 28px;
+                background-color: var(--color-brand-blue);
+                border-radius: 50%;
+                border: 4px solid white;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .timeline-content {
+                margin-left: 40px;
+                font-size: 13px;
+                padding-top: 2px;
+            }
+            .timeline-bullets {
+                margin-top: 5px;
+                font-size: 11px;
+                color: #555;
+                list-style-type: none;
+                padding: 0;
+            }
+            .timeline-bullets li {
+                position: relative;
+                padding-left: 20px;
+                margin-bottom: 4px;
+            }
+            .timeline-bullets li::before {
+                content: "+";
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: white;
+                background-color: var(--color-brand-blue);
+                border-radius: 50%;
+                width: 14px;
+                height: 14px;
+                font-size: 10px;
+                line-height: 14px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            /* Skill Bars */
+            .skills-container {
+                margin-bottom: 30px;
+            }
+            .skill-row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+                font-size: 11px;
+            }
+            .skill-label {
+                width: 175px;
+                font-weight: 700;
+                text-align: left;
+                padding-right: 16px;
+                text-transform: uppercase;
+            }
+            .skill-bar-wrapper {
+                flex: 1;
+                height: 12px;
+                background-color: #e0e0e0;
+                position: relative;
+            }
+            .skill-bar-fill {
+                height: 100%;
+                background-color: var(--color-brand-blue);
+            }
+            .skill-desc {
+                width: 175px;
+                padding-left: 16px;
+                font-style: italic;
+                color: #777;
+            }
+
+            /* Category Headers */
+            .skill-category-tag {
+                display: inline-block;
+                background-color: var(--color-brand-blue);
+                color: white;
+                font-size: 11px;
+                padding: 6px 14px;
+                margin-bottom: 14px;
+                margin-top: 20px;
+                border-radius: 12px;
+                border-bottom-left-radius: 2px;
+            }
+
+            /* Utilities */
+            .font-bold {
+                font-weight: 700;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- PAGE 1: Personal Data & Work Experience -->
+        <div class="page">
+            <div class="cv-header font-display">
+                <div class="cv-header-logo">
+                    <CvLogo />
+                </div>
+                <div class="cv-header-title">
+                    / {cvData.header.title}
+                </div>
+            </div>
+
+            <div class="section-title">PERSONAL <span>DATA</span></div>
+
+            <table class="personal-data">
+                <tbody>
+                    <tr>
+                        <td>NAME</td>
+                        <td
+                            >{cvData.personalData.NAME.split(" ")[0]}
+                            <span class="text-brand font-bold"
+                                >{cvData.personalData.NAME.split(" ")[1]}</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DATE OF BIRTH</td>
+                        <td>{cvData.personalData["DATE OF BIRTH"]}</td>
+                    </tr>
+                    <tr>
+                        <td>MARITAL STATUS</td>
+                        <td>{cvData.personalData["MARITAL STATUS"]}</td>
+                    </tr>
+                    <tr>
+                        <td>NATIONALITY</td>
+                        <td>{cvData.personalData.NATIONALITY}</td>
+                    </tr>
+                    <tr>
+                        <td>RESIDENCE</td>
+                        <td>{cvData.personalData.RESIDENCE}</td>
+                    </tr>
+                    <tr>
+                        <td>PHONE NUMBER</td>
+                        <td>{cvData.personalData["PHONE NUMBER"]}</td>
+                    </tr>
+                    <tr>
+                        <td>EMAIL</td>
+                        <td
+                            set:html={externalLinkHtml(
+                                `mailto:${cvData.personalData.EMAIL.replace(
+                                    "mailto:",
+                                    ""
+                                )}`,
+                                cvData.personalData.EMAIL.replace("mailto:", "")
+                            )}></td>
+                    </tr>
+                    <tr>
+                        <td>WEBSITE</td>
+                        <td
+                            set:html={externalLinkHtml(
+                                cvData.personalData.WEBSITE,
+                                cvData.personalData.WEBSITE
+                            )}></td>
+                    </tr>
+                    <tr>
+                        <td>LINKEDIN</td>
+                        <td
+                            set:html={externalLinkHtml(
+                                cvData.personalData.LINKEDIN,
+                                cvData.personalData.LINKEDIN
+                            )}></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="section-title">WORK <span>EXPERIENCE</span></div>
+
+            <div class="timeline">
+                {
+                    cvData.workExperience.map((item) => (
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                {item.start} - {item.end}
+                            </div>
+                            <div class="timeline-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="4"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                        ry="2"
+                                    />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="timeline-content">
+                                {item.title}{" "}
+                                <span class="text-brand font-bold">
+                                    {item.company}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- PAGE 2: Education, Languages, Computer Literacy -->
+        <div class="page">
+            <div class="cv-header font-display">
+                <div class="cv-header-logo">
+                    <CvLogo />
+                </div>
+                <div class="cv-header-title">
+                    / {cvData.header.title}
+                </div>
+            </div>
+
+            <div class="section-title">EXAMS AND <span>EDUCATION</span></div>
+
+            <div class="timeline">
+                {
+                    cvData.examsAndEducation.map((item) => (
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                {item.start}
+                                {item.end ? ` - ${item.end}` : ""}
+                            </div>
+                            <div class="timeline-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="4"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                        ry="2"
+                                    />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="timeline-content">
+                                {item.title}{" "}
+                                {item.institution && (
+                                    <span class="text-brand font-bold">
+                                        {item.institution}
+                                    </span>
+                                )}
+                                {item.bullets && item.bullets.length > 0 && (
+                                    <ul class="timeline-bullets">
+                                        {item.bullets.map((b) => (
+                                            <li>
+                                                <span class="font-bold font-italic">
+                                                    {b}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="section-title" style="margin-top: 60px;">
+                LANGUAGE <span>SKILLS</span>
+            </div>
+
+            <div class="skills-container">
+                {
+                    cvData.languageSkills.map((skill) => (
+                        <div class="skill-row">
+                            <div class="skill-label">{skill.name}</div>
+                            <div class="skill-bar-wrapper">
+                                <div
+                                    class="skill-bar-fill"
+                                    style={`width: ${skill.level}%;`}
+                                />
+                            </div>
+                            <div class="skill-desc">{skill.label}</div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <div class="section-title" style="margin-top: 60px;">
+                COMPUTER <span>LITERACY</span>
+            </div>
+
+            <div class="skills-container">
+                {
+                    cvData.computerLiteracy.map((skill) => (
+                        <div class="skill-row">
+                            <div class="skill-label">{skill.name}</div>
+                            <div class="skill-bar-wrapper">
+                                <div
+                                    class="skill-bar-fill"
+                                    style={`width: ${skill.level}%;`}
+                                />
+                            </div>
+                            <div class="skill-desc">{skill.label}</div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- PAGE 3: KNOWLEDGE & SKILLS (Part 1/2) -->
+        <div class="page">
+            <div class="cv-header font-display">
+                <div class="cv-header-logo">
+                    <CvLogo />
+                </div>
+                <div class="cv-header-title">
+                    / {cvData.header.title}
+                </div>
+            </div>
+
+            <div class="section-title">KNOWLEDGE & <span>SKILLS</span></div>
+
+            {
+                cvData.knowledgeSkills.slice(0, 3).map((category) => (
+                    <div class="skills-container" style="margin-bottom: 12px;">
+                        <div class="skill-category-tag">
+                            {category.category}
+                        </div>
+                        {category.skills.map((skill) => (
+                            <div class="skill-row">
+                                <div class="skill-label">{skill.name}</div>
+                                <div class="skill-bar-wrapper">
+                                    <div
+                                        class="skill-bar-fill"
+                                        style={`width: ${skill.level}%;`}
+                                    />
+                                </div>
+                                <div class="skill-desc">{skill.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- PAGE 4: KNOWLEDGE & SKILLS (Part 2/2) -->
+        <div class="page">
+            <div class="cv-header font-display">
+                <div class="cv-header-logo">
+                    <CvLogo />
+                </div>
+                <div class="cv-header-title">
+                    / {cvData.header.title}
+                </div>
+            </div>
+
+            {
+                cvData.knowledgeSkills.slice(3).map((category) => (
+                    <div class="skills-container" style="margin-bottom: 12px;">
+                        <div class="skill-category-tag">
+                            {category.category}
+                        </div>
+                        {category.skills.map((skill) => (
+                            <div class="skill-row">
+                                <div class="skill-label">{skill.name}</div>
+                                <div class="skill-bar-wrapper">
+                                    <div
+                                        class="skill-bar-fill"
+                                        style={`width: ${skill.level}%;`}
+                                    />
+                                </div>
+                                <div class="skill-desc">{skill.label}</div>
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+    </body>
+</html>
