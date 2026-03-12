@@ -1,23 +1,17 @@
 import puppeteer from 'puppeteer';
 import { spawn } from 'child_process';
 
-const PORT = 4321;
+const PORT = 4322;
 const URL = `http://localhost:${PORT}/cv`;
+const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const shellCmd = process.platform === 'win32';
 
 async function generate() {
-    console.log('Building Astro project...');
-    await new Promise((resolve, reject) => {
-        const build = spawn('npm', ['run', 'build'], { stdio: 'inherit' });
-        build.on('close', (code) => {
-            if (code !== 0) reject(new Error('Build failed'));
-            else resolve();
-        });
-    });
-
-    console.log('Starting preview server for PDF capture...');
-    const preview = spawn('npm', ['run', 'preview', '--', '--port', PORT.toString()], {
+    console.log('Starting dev server for PDF capture...');
+    const preview = spawn(npmCmd, ['run', 'dev', '--', '--port', PORT.toString()], {
         stdio: 'ignore',
-        detached: true,
+        detached: false,
+        shell: shellCmd,
     });
 
     console.log(`Waiting for ${URL} to become available...`);
@@ -34,8 +28,8 @@ async function generate() {
     }
 
     if (retries === 0) {
-        console.error('Failed to start preview server (timeout).');
-        process.kill(-preview.pid);
+        console.error('Failed to start dev server (timeout).');
+        preview.kill();
         process.exit(1);
     }
 
@@ -46,20 +40,16 @@ async function generate() {
     await page.goto(URL, { waitUntil: 'networkidle0' });
 
     await page.pdf({
-        path: 'public/cv.pdf',
+        path: 'public/download/jankaiser_cv_en.pdf',
         format: 'A4',
         printBackground: true,
         margin: { top: 0, right: 0, bottom: 0, left: 0 }
     });
 
     await browser.close();
-    console.log('✅ Generated CV successfully at "public/cv.pdf"');
+    console.log('✅ Generated CV successfully at "public/download/jankaiser_cv_en.pdf"');
 
-    try {
-        process.kill(-preview.pid);
-    } catch (e) {
-        preview.kill();
-    }
+    preview.kill();
 }
 
 generate().catch(console.error);

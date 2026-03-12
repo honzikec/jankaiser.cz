@@ -3,6 +3,10 @@ import cvData from "../data/cv.json";
 import CvLogo from "../components/CvLogo.astro";
 import "../styles/global.css";
 
+if (!import.meta.env.DEV) {
+    return new Response(null, { status: 404, statusText: "Not found" });
+}
+
 // Break into pages for A4 printing
 const escapeHtml = (value: string) =>
     value
@@ -13,7 +17,7 @@ const escapeHtml = (value: string) =>
 
 const externalLinkHtml = (href: string, label: string) =>
     `<a href="${escapeHtml(href)}" class="text-brand no-underline">${escapeHtml(
-        label
+        label,
     )}</a>`;
 ---
 
@@ -305,26 +309,32 @@ const externalLinkHtml = (href: string, label: string) =>
                             set:html={externalLinkHtml(
                                 `mailto:${cvData.personalData.EMAIL.replace(
                                     "mailto:",
-                                    ""
+                                    "",
                                 )}`,
-                                cvData.personalData.EMAIL.replace("mailto:", "")
-                            )}></td>
+                                cvData.personalData.EMAIL.replace(
+                                    "mailto:",
+                                    "",
+                                ),
+                            )}
+                        />
                     </tr>
                     <tr>
                         <td>WEBSITE</td>
                         <td
                             set:html={externalLinkHtml(
                                 cvData.personalData.WEBSITE,
-                                cvData.personalData.WEBSITE
-                            )}></td>
+                                cvData.personalData.WEBSITE,
+                            )}
+                        />
                     </tr>
                     <tr>
                         <td>LINKEDIN</td>
                         <td
                             set:html={externalLinkHtml(
                                 cvData.personalData.LINKEDIN,
-                                cvData.personalData.LINKEDIN
-                            )}></td>
+                                cvData.personalData.LINKEDIN,
+                            )}
+                        />
                     </tr>
                 </tbody>
             </table>
@@ -444,7 +454,7 @@ const externalLinkHtml = (href: string, label: string) =>
                 }
             </div>
 
-            <div class="section-title" style="margin-top: 60px;">
+            <div class="section-title" style="margin-top: 20px;">
                 LANGUAGE <span>SKILLS</span>
             </div>
 

@@ -85,11 +85,11 @@ export default function Intro() {
           </motion.h1>
 
           <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-500 tracking-tight">
-            My name is <span className="text-brand-blue drop-shadow-sm">Jan</span>.
+            My name is <span className="text-brand-blue drop-shadow-xs">Jan</span>.
           </motion.h2>
 
-          <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-brand-text mt-4 md:mt-6 tracking-tight">
-            And I <br className="md:hidden" /><span className="text-brand-blue relative inline-block drop-shadow-sm">
+          <motion.h2 variants={itemVariants} className="text-xl md:text-2xl lg:text-3xl font-bold text-slate-500 tracking-tight mt-2">
+            And I <br className="md:hidden" /><span className="text-brand-blue relative inline-block drop-shadow-xs">
               make software.
               <AnimatedUnderline delay={2.5} />
             </span>
