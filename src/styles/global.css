@@ -19,7 +19,6 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--color-brand-bg);
     /* Reset colors to the original off-white/gray */
     color: var(--color-brand-text);
 }

@@ -2,14 +2,31 @@
     "header": {
         "name": "JAN",
         "surname": "KAISER",
-        "title": "CV"
+        "title": "Senior Software Engineer"
+    },
+    "positioning": {
+        "summary": "Full-stack engineer with 15+ years of experience building software in complex, real-world domains. I’m most comfortable working across systems end-to-end; from shaping product ideas to implementing and evolving them in production, often in fuzzy or poorly defined problem spaces. I contribute to architectural decisions, mentor teammates, and help teams navigate difficult technical problems, while staying pragmatic and open to other perspectives.",
+        "strengths": [
+            "End-to-end ownership across frontend and backend",
+            "Building and evolving systems in complex environments",
+            "Navigating ambiguity and shaping workable solutions",
+            "Designing systems under real-world constraints",
+            "Mentoring engineers and contributing to architectural direction"
+        ],
+        "selectedImpact": [
+            "Shaped the frontend platform of an industrial plant control system as the primary senior frontend engineer for several years, building and evolving a complex ecosystem of Angular packages used to compose and operate real-world plant configurations, and contributing to architectural decisions including company-wide initiatives such as a shared component library and frontend standards.",
+            "Brought in as the first engineer to kick off a spatial computing project for a San Francisco-based startup; built the initial system from scratch using Babylon.js and React, including custom architecture (e.g. integrating RxJS for time-based data and visualization), and later handed off the project to a full-time engineer after establishing a solid foundation.",
+            "Helped drive a long-running modernization effort for a New York–based financial education company; evolved a legacy Yii2 backend into a Next.js frontend with an API layer, working across complex integrations (custom e-commerce, third-party learning platform, multiple SSO providers); stepped up to handle client communication, architecture, and team coordination during a critical phase."
+        ],
+        "recognition": [
+            "Speaker at FrontKon 2024 (biggest Czech frontend conference)",
+            "Nx Certified Expert"
+        ]
     },
     "personalData": {
         "NAME": "JAN KAISER",
-        "DATE OF BIRTH": "11.09.1989",
-        "MARITAL STATUS": "Married",
         "NATIONALITY": "Czech",
-        "RESIDENCE": "Slovenská 890/3, Prague, Czech Republic",
+        "RESIDENCE": "Prague, Czech Republic",
         "PHONE NUMBER": "+420 601 548 388",
         "EMAIL": "mailto@jankaiser.cz",
         "WEBSITE": "https://jankaiser.cz/",
@@ -17,86 +34,123 @@
     },
     "workExperience": [
         {
-            "start": "10 / 2007",
-            "end": "∞",
-            "title": "Freelance Web Developer & Art Director",
-            "company": "@ jankaiser.cz"
-        },
-        {
-            "start": "10 / 2011",
-            "end": "06 / 2012",
-            "title": "Front-end Developer & Graphic Designer",
-            "company": "@ Develion Art"
-        },
-        {
-            "start": "06 / 2012",
-            "end": "12 / 2012",
-            "title": "Front-end & PHP Developer & Art Director",
-            "company": "@ Zen Systems"
-        },
-        {
-            "start": "09 / 2012",
-            "end": "12 / 2012",
-            "title": "Front-end Developer",
-            "company": "@ LOGICA (now part of CGI)"
-        },
-        {
-            "start": "01 / 2013",
-            "end": "09 / 2014",
-            "title": "Creative Coder",
-            "company": "@ Bistro Agency"
-        },
-        {
-            "start": "01 / 2014",
-            "end": "∞",
-            "title": "Co-founder / CTO",
-            "company": "@ 7divs"
-        },
-        {
-            "start": "09 / 2014",
-            "end": "04 / 2015",
-            "title": "Creative Front-end Developer / UX Designer",
-            "company": "@ E-commerce Holding"
-        },
-        {
-            "start": "05 / 2015",
-            "end": "05 / 2017",
-            "title": "UX & Front-end Technology Consultant / Business Analyst",
-            "company": "@ Quanti"
+            "start": "08 / 2022",
+            "end": "Present",
+            "title": "Senior Software Engineer",
+            "company": "@ This Dot Labs",
+            "bullets": [
+                "Worked across multiple client projects in a fast-paced consultancy environment, focusing on complex frontend and full-stack systems, often involving exploratory work including AST-based tooling, interactive demos, and rapid prototyping in new technologies.",
+                "Took ownership of features and systems end-to-end, often in unfamiliar domains or partially defined problem spaces and contributed to architectural decisions, especially in situations involving legacy systems, external integrations, or non-trivial data flows.",
+                "Worked directly with clients to clarify requirements, challenge assumptions, and align technical decisions with real-world constraints.",
+                "Stepped in where needed to unblock teams - from resolving technical issues to helping coordinate work or fill gaps in communication."
+            ]
         },
         {
             "start": "06 / 2017",
             "end": "10 / 2022",
             "title": "Senior Software Engineer",
-            "company": "@ Bühler Group"
+            "company": "@ Bühler Group",
+            "bullets": [
+                "Worked on the core frontend platform of an industrial plant control system, building and evolving a complex ecosystem of Angular packages used by engineers to compose and operate real-world plant configurations across multiple deployments.",
+                "Served as the primary senior frontend engineer for several years, contributing to architectural decisions and helping guide the platform’s evolution, including company-wide initiatives such as a shared component library.",
+                "Supported engineers building on top of the platform by resolving issues, improving consistency, and translating complex domain requirements into usable and reliable interfaces."
+            ]
         },
         {
-            "start": "08 / 2022",
-            "end": "∞",
-            "title": "Senior Software Engineer",
-            "company": "@ This Dot Labs"
+            "start": "05 / 2015",
+            "end": "05 / 2017",
+            "title": "Software Engineer & Technical Consultant",
+            "company": "@ Quanti",
+            "bullets": [
+                "Worked across multiple bespoke software projects, contributing to both implementation and early-stage design, including frontend development, API design, and system modeling.",
+                "Collaborated directly with clients to gather requirements, translate them into technical specifications (including diagrams and API designs), and shape solutions from initial concepts through delivery.",
+                "Took on a range of responsibilities across projects - from frontend engineering and UX wireframing to project coordination - developing a strong foundation in bridging business needs and technical implementation."
+            ]
+        },
+        {
+            "start": "01 / 2014",
+            "end": "Present",
+            "title": "Co-founder & Technical Lead",
+            "company": "@ 7divs",
+            "bullets": [
+                "Co-created a lightweight CMS platform focused on simplicity and standardized frontend structure for small business websites.",
+                "Designed and implemented the system end-to-end, including content management, frontend architecture, and configuration-driven customization.",
+                "Maintained and evolved the product over time, balancing usability, flexibility, and low maintenance overhead."
+            ]
+        },
+        {
+            "start": "09 / 2014",
+            "end": "04 / 2015",
+            "title": "Frontend Engineer",
+            "company": "@ E-commerce Holding",
+            "bullets": [
+                "Worked on customer-facing e-commerce platforms within a large, VC-backed group, contributing to frontend development and user experience improvements.",
+                "Developed and maintained frontend features across evolving backend systems (from .NET to PHP-based platforms).",
+                "Collaborated with designers and product teams to improve usability and consistency across key user flows."
+            ]
+        },
+        {
+            "start": "01 / 2013",
+            "end": "09 / 2014",
+            "title": "Creative Coder",
+            "company": "@ Bistro Agency",
+            "bullets": [
+                "Developed interactive, animation-heavy landing pages for marketing campaigns for clients such as Vodafone and McCann Erickson.",
+                "Focused on building polished user experiences and frontend interactions, often working closely with art directors in a fast-paced agency environment.",
+                "Contributed to early e-commerce-related projects, which led to a transition into product-focused development."
+            ]
+        },
+        {
+            "start": "09 / 2012",
+            "end": "12 / 2012",
+            "title": "Front-end Developer",
+            "company": "@ LOGICA (now part of CGI)",
+            "bullets": [
+                "Joined a challenging enterprise project as the sole frontend engineer, working within a .NET-based system.",
+                "Delivered frontend solutions under strict constraints, including Bootstrap-based UI and legacy browser support (e.g. IE6)."
+            ]
+        },
+        {
+            "start": "06 / 2012",
+            "end": "12 / 2012",
+            "title": "Front-end & PHP Developer & Art Director",
+            "company": "@ Zen Systems",
+            "bullets": [
+                "Worked across a range of small projects, contributing to frontend development, PHP backend work, and UI/design tasks.",
+                "Delivered end-to-end features in a generalist role, combining implementation with basic visual and interaction design."
+            ]
+        },
+        {
+            "start": "10 / 2011",
+            "end": "06 / 2012",
+            "title": "Front-end Developer & Graphic Designer",
+            "company": "@ Develion Art",
+            "bullets": [
+                "Started as a graphic designer and moved into frontend development, working across both design and implementation.",
+                "Contributed to internal and client projects, combining UI design with frontend development.",
+                "Developed early experience bridging design and engineering."
+            ]
+        },
+        {
+            "start": "10 / 2007",
+            "end": "Present",
+            "title": "Freelance Software Engineer",
+            "company": "@ jankaiser.cz",
+            "bullets": [
+                "Delivered websites and small applications for clients end-to-end, covering both frontend implementation and visual design.",
+                "Built early experience working directly with clients, shaping requirements, and taking full ownership of projects."
+            ]
         }
     ],
     "examsAndEducation": [
         {
-            "start": "2003",
-            "end": "2009",
-            "title": "Czech-French bilingual studies",
-            "institution": "@ Pierre de Coubertin High School"
-        },
-        {
-            "start": "2008",
-            "title": "C1 Certificate in French"
-        },
-        {
-            "start": "2011",
-            "title": "State Examination in English"
-        },
-        {
-            "start": "2013",
-            "end": "2018",
-            "title": "Applied Informatics (Bachelor's degree)",
-            "institution": "@ University of Economics, Prague"
+            "start": "2022",
+            "end": "Present",
+            "title": "Biomedical Informatics (PhD)",
+            "institution": "@ 1st Faculty of Medicine, Charles University",
+            "bullets": [
+                "Intersection of LLMs, agentic workflows, and clinical data systems"
+            ]
         },
         {
             "start": "2018",
@@ -109,260 +163,31 @@
             ]
         },
         {
-            "start": "2022",
-            "end": "∞",
-            "title": "Biomedical Informatics (PhD)",
-            "institution": "@ 1st Faculty of Medicine, Charles University"
-        },
-        {
-            "start": "2024",
-            "title": "TOEFL (115/120)"
+            "start": "2013",
+            "end": "2018",
+            "title": "Applied Informatics (Bachelor's degree)",
+            "institution": "@ University of Economics, Prague"
         }
     ],
-    "languageSkills": [
-        {
-            "name": "CZECH",
-            "level": 100,
-            "label": "(native speaker)"
-        },
-        {
-            "name": "ENGLISH",
-            "level": 90,
-            "label": "(fluent)"
-        },
-        {
-            "name": "FRENCH",
-            "level": 70,
-            "label": "(fluent)"
-        },
-        {
-            "name": "GERMAN",
-            "level": 30,
-            "label": "(pre-intermediate)"
-        },
-        {
-            "name": "ITALIAN",
-            "level": 30,
-            "label": "(pre-intermediate)"
-        }
-    ],
-    "computerLiteracy": [
-        {
-            "name": "MS OFFICE",
-            "level": 85,
-            "label": "(very advanced user)"
-        },
-        {
-            "name": "WINDOWS, OS X, LINUX",
-            "level": 85,
-            "label": "(very advanced user)"
-        },
-        {
-            "name": "COMPUTER SECURITY",
-            "level": 60,
-            "label": "(very good knowledge)"
-        },
-        {
-            "name": "NETWORKS",
-            "level": 40,
-            "label": "(good knowledge)"
-        }
-    ],
-    "knowledgeSkills": [
-        {
-            "category": "Design Tools",
-            "skills": [
-                {
-                    "name": "Adobe Photoshop",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "Adobe Illustrator",
-                    "level": 85,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "Adobe InDesign",
-                    "level": 50,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "FIGMA",
-                    "level": 30,
-                    "label": "(good)"
-                }
-            ]
-        },
-        {
-            "category": "Design / UX / UI",
-            "skills": [
-                {
-                    "name": "UX ANALYSIS, PROTOTYPING",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "USER INTERFACE DESIGN",
-                    "level": 95,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "BRANDING, CI",
-                    "level": 75,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "ILLUSTRATIONS",
-                    "level": 60,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "PRINT DESIGN / DTP",
-                    "level": 50,
-                    "label": "(good)"
-                }
-            ]
-        },
-        {
-            "category": "Front-end",
-            "skills": [
-                {
-                    "name": "ANGULAR",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "REACT & NEXT.JS",
-                    "level": 85,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "TYPESCRIPT & JS",
-                    "level": 95,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "HTML & CSS",
-                    "level": 95,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "TAILWIND & POSTCSS",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "VUE / NUXT",
-                    "level": 70,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "ASTRO",
-                    "level": 75,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "OTHER FRAMEWORKS",
-                    "level": 75,
-                    "label": "(well oriented)"
-                }
-            ]
-        },
-        {
-            "category": "Back-end & Cloud",
-            "skills": [
-                {
-                    "name": "NODE.JS / NESTJS",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "PHP (OOP)",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "PYTHON",
-                    "level": 75,
-                    "label": "(well versed)"
-                },
-                {
-                    "name": "LLMs, AI INTEGRATIONS & AGENTIC WORKFLOWS",
-                    "level": 85,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "AMAZON WEB SERVICES (AWS) / VERCEL",
-                    "level": 80,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "SQL, NOSQL & VECTOR DATABASES",
-                    "level": 80,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "SYSTEM ARCHITECTURE",
-                    "level": 80,
-                    "label": "(proficient)"
-                }
-            ]
-        },
-        {
-            "category": "Infrastructure & Tooling",
-            "skills": [
-                {
-                    "name": "AI ASSISTED DEVELOPMENT",
-                    "level": 95,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "CI/CD, DEVOPS & GITHUB ACTIONS",
-                    "level": 85,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "DOCKER",
-                    "level": 85,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "MODERN BUILD TOOLS (VITE, NPM, BUN, ETC.)",
-                    "level": 90,
-                    "label": "(proficient)"
-                }
-            ]
-        },
-        {
-            "category": "Engineering Leadership",
-            "skills": [
-                {
-                    "name": "TECHNICAL ROADMAPPING & STRATEGY",
-                    "level": 80,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "TECHNICAL MENTORING",
-                    "level": 95,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "AGILE METHODOLOGIES (SCRUM, KANBAN)",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "CROSS-FUNCTIONAL COLLABORATION",
-                    "level": 90,
-                    "label": "(proficient)"
-                },
-                {
-                    "name": "JIRA, GITHUB, AZURE DEVOPS",
-                    "level": 85,
-                    "label": "(proficient)"
-                }
-            ]
-        }
-    ]
+    "compactSkills": {
+        "languages": "Czech (Native), English (Fluent - TOEFL 115/120), French (Fluent)",
+        "technical": [
+            {
+                "category": "Emerging Tech",
+                "items": "LLMs, AI Integrations, Agentic Workflows, AI Assisted Development"
+            },
+            {
+                "category": "Core & Frameworks",
+                "items": "TypeScript, JavaScript, React, Next.js, Angular, Vue, Astro"
+            },
+            {
+                "category": "Backend & Cloud",
+                "items": "Node.js, NestJS, Python, PHP, AWS, Vercel, CI/CD, Docker, SQL / NoSQL"
+            },
+            {
+                "category": "Design & Leadership",
+                "items": "Technical Mentorship, Roadmapping, Cross-functional Communication, UX/UI, Figma"
+            }
+        ]
+    }
 }

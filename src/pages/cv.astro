@@ -40,12 +40,13 @@ const externalLinkHtml = (href: string, label: string) =>
             }
             .page {
                 width: 210mm;
-                height: 297mm;
-                padding: 20mm;
+                min-height: 297mm;
+                padding: 15mm 20mm;
                 box-sizing: border-box;
                 page-break-after: always;
                 position: relative;
                 background: white;
+                overflow: hidden;
             }
 
             h1,
@@ -63,86 +64,145 @@ const externalLinkHtml = (href: string, label: string) =>
                 color: var(--color-brand-blue);
                 text-decoration: none;
             }
-            .bg-brand {
-                background-color: var(--color-brand-blue);
-            }
-            .bg-brand-light {
-                background-color: var(--color-brand-bg);
-            }
 
             /* Header */
             .cv-header {
                 display: flex;
                 justify-content: space-between;
-                align-items: baseline;
-                margin-bottom: 40px;
+                align-items: center;
+                margin-bottom: 25px;
             }
             .cv-header-logo {
                 font-size: 24px;
                 font-weight: 300;
                 letter-spacing: 1px;
+                margin-left: -10px;
             }
             .cv-header-logo span {
                 font-weight: 600;
             }
             .cv-header-title {
-                font-size: 24px;
-                font-weight: 100;
+                font-size: 20px;
+                font-weight: 300;
                 color: var(--color-brand-blue);
+            }
+
+            /* Positioning Section */
+            .positioning-block {
+                margin-bottom: 25px;
+                font-size: 13px;
+                line-height: 1.5;
+            }
+            .positioning-summary {
+                margin-bottom: 12px;
+                text-align: justify;
+            }
+            .positioning-strengths {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            .strength-badge {
+                background-color: var(--color-brand-bg);
+                color: var(--color-brand-blue);
+                padding: 4px 10px;
+                border-radius: 4px;
+                font-size: 11px;
+                font-weight: 600;
+            }
+            .recognition-badge {
+                background-color: transparent;
+                color: var(--color-brand-blue);
+                padding: 3px 9px;
+                border-radius: 4px;
+                font-size: 11px;
+                font-weight: 600;
+                border: 1px solid var(--color-brand-blue);
+                display: flex;
+                align-items: center;
+                gap: 5px;
             }
 
             /* Section Titles */
             .section-title {
-                font-size: 16px;
+                font-size: 15px;
                 font-weight: 400;
                 text-transform: uppercase;
                 letter-spacing: 2px;
-                margin-bottom: 24px;
-                color: #888;
+                margin-bottom: 18px;
+                color: #3e3e3f;
+                padding-bottom: 5px;
+                margin-top: 36px;
             }
             .section-title span {
                 font-weight: 700;
                 color: var(--color-brand-blue);
             }
 
-            /* Personal Data Table */
-            .personal-data {
-                width: 100%;
-                border-collapse: collapse;
-                font-size: 12px;
-                margin-bottom: 40px;
+            /* Selected Impact */
+            .impact-list {
+                margin: 0 0 25px 0;
+                font-size: 12.5px;
+                line-height: 1.5;
             }
-            .personal-data tr:nth-child(odd) {
-                background-color: #f0f0f0;
+            .impact-list li {
+                margin-bottom: 18px;
+                padding-left: 18px;
+                border-left: 1px solid var(--color-brand-blue);
+                font-style: italic;
             }
-            .personal-data td {
-                padding: 8px 12px;
+
+            /* Personal Data Grid */
+            .personal-data-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                font-size: 11px;
+                margin-bottom: 30px;
+                background: #f9f9f9;
+                padding: 12px;
+                border-radius: 6px;
             }
-            .personal-data td:first-child {
+            .data-item {
+                display: flex;
+                flex-direction: column;
+            }
+            .data-label {
                 font-weight: 700;
-                width: 150px;
+                color: #3e3e3f;
+                font-size: 9px;
+                text-transform: uppercase;
+                margin-bottom: 2px;
+            }
+            .data-value {
+                font-weight: 500;
             }
 
             /* Timeline */
             .timeline {
                 position: relative;
                 margin-left: 140px;
-                padding-bottom: 20px;
+                padding-bottom: 10px;
             }
             .timeline-item {
                 position: relative;
-                margin-bottom: 24px;
+                margin-bottom: 20px;
                 min-height: 24px;
             }
-            .timeline-item:not(:last-child)::before {
+            .timeline-item:not(:last-child)::before,
+            .timeline-continued .timeline-item:last-child::before {
                 content: "";
                 position: absolute;
                 top: 0;
-                bottom: -24px;
+                bottom: -20px;
                 left: 20px;
                 width: 1px;
                 background-color: #93d9fe;
                 z-index: 1;
+            }
+            .timeline-continued .timeline-item:last-child::before {
+                bottom: -1500px;
             }
             .timeline-date {
                 position: absolute;
@@ -175,81 +235,51 @@ const externalLinkHtml = (href: string, label: string) =>
             .timeline-content {
                 margin-left: 40px;
                 font-size: 13px;
-                padding-top: 2px;
+                position: relative;
+                top: -1px;
+            }
+            .timeline-title {
+                font-weight: 600;
+                margin-bottom: 2px;
+            }
+            .timeline-company {
+                color: var(--color-brand-blue);
+                font-weight: 700;
+                font-size: 12px;
             }
             .timeline-bullets {
-                margin-top: 5px;
+                margin-top: 8px;
                 font-size: 11px;
-                color: #555;
-                list-style-type: none;
-                padding: 0;
+                line-height: 1.45;
+                color: #888;
+                margin-bottom: 0;
             }
             .timeline-bullets li {
-                position: relative;
-                padding-left: 20px;
                 margin-bottom: 4px;
             }
-            .timeline-bullets li::before {
-                content: "+";
-                position: absolute;
-                left: 0;
-                top: 0;
-                color: white;
-                background-color: var(--color-brand-blue);
-                border-radius: 50%;
-                width: 14px;
-                height: 14px;
-                font-size: 10px;
-                line-height: 14px;
-                text-align: center;
-                font-weight: bold;
+            .timeline-bullets li::marker {
+                color: var(--color-brand-blue);
             }
 
-            /* Skill Bars */
-            .skills-container {
-                margin-bottom: 30px;
-            }
-            .skill-row {
-                display: flex;
-                align-items: center;
-                margin-bottom: 15px;
-                font-size: 11px;
-            }
-            .skill-label {
-                width: 175px;
-                font-weight: 700;
-                text-align: left;
-                padding-right: 16px;
-                text-transform: uppercase;
-            }
-            .skill-bar-wrapper {
-                flex: 1;
-                height: 12px;
-                background-color: #e0e0e0;
-                position: relative;
-            }
-            .skill-bar-fill {
-                height: 100%;
-                background-color: var(--color-brand-blue);
-            }
-            .skill-desc {
-                width: 175px;
-                padding-left: 16px;
-                font-style: italic;
-                color: #777;
-            }
-
-            /* Category Headers */
-            .skill-category-tag {
-                display: inline-block;
-                background-color: var(--color-brand-blue);
-                color: white;
-                font-size: 11px;
-                padding: 6px 14px;
-                margin-bottom: 14px;
+            /* Compact Skills */
+            .compact-skills {
                 margin-top: 20px;
-                border-radius: 12px;
-                border-bottom-left-radius: 2px;
+                font-size: 12px;
+            }
+            .compact-skills-group {
+                margin-bottom: 12px;
+            }
+            .compact-skills-label {
+                font-weight: 700;
+                color: var(--color-brand-blue);
+                margin-bottom: 2px;
+                display: block;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .compact-skills-items {
+                color: #555;
             }
 
             /* Utilities */
@@ -259,90 +289,64 @@ const externalLinkHtml = (href: string, label: string) =>
         </style>
     </head>
     <body>
-        <!-- PAGE 1: Personal Data & Work Experience -->
+        <!-- PAGE 1: Intro, Positioning, Impact & Recent Experience -->
         <div class="page">
             <div class="cv-header font-display">
                 <div class="cv-header-logo">
                     <CvLogo />
                 </div>
-                <div class="cv-header-title">
-                    / {cvData.header.title}
+                <div class="cv-header-title">/ CV</div>
+            </div>
+
+            <!-- Positioning -->
+            <div class="positioning-block">
+                <div class="positioning-summary">
+                    {cvData.positioning.summary}
+                </div>
+                <div class="positioning-strengths">
+                    {
+                        cvData.positioning.strengths.map((str) => (
+                            <span class="strength-badge">{str}</span>
+                        ))
+                    }
+                    {
+                        cvData.positioning.recognition?.map((item) => (
+                            <span class="recognition-badge">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                                {item}
+                            </span>
+                        ))
+                    }
                 </div>
             </div>
 
-            <div class="section-title">PERSONAL <span>DATA</span></div>
-
-            <table class="personal-data">
-                <tbody>
-                    <tr>
-                        <td>NAME</td>
-                        <td
-                            >{cvData.personalData.NAME.split(" ")[0]}
-                            <span class="text-brand font-bold"
-                                >{cvData.personalData.NAME.split(" ")[1]}</span
-                            >
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>DATE OF BIRTH</td>
-                        <td>{cvData.personalData["DATE OF BIRTH"]}</td>
-                    </tr>
-                    <tr>
-                        <td>MARITAL STATUS</td>
-                        <td>{cvData.personalData["MARITAL STATUS"]}</td>
-                    </tr>
-                    <tr>
-                        <td>NATIONALITY</td>
-                        <td>{cvData.personalData.NATIONALITY}</td>
-                    </tr>
-                    <tr>
-                        <td>RESIDENCE</td>
-                        <td>{cvData.personalData.RESIDENCE}</td>
-                    </tr>
-                    <tr>
-                        <td>PHONE NUMBER</td>
-                        <td>{cvData.personalData["PHONE NUMBER"]}</td>
-                    </tr>
-                    <tr>
-                        <td>EMAIL</td>
-                        <td
-                            set:html={externalLinkHtml(
-                                `mailto:${cvData.personalData.EMAIL.replace(
-                                    "mailto:",
-                                    "",
-                                )}`,
-                                cvData.personalData.EMAIL.replace(
-                                    "mailto:",
-                                    "",
-                                ),
-                            )}
-                        />
-                    </tr>
-                    <tr>
-                        <td>WEBSITE</td>
-                        <td
-                            set:html={externalLinkHtml(
-                                cvData.personalData.WEBSITE,
-                                cvData.personalData.WEBSITE,
-                            )}
-                        />
-                    </tr>
-                    <tr>
-                        <td>LINKEDIN</td>
-                        <td
-                            set:html={externalLinkHtml(
-                                cvData.personalData.LINKEDIN,
-                                cvData.personalData.LINKEDIN,
-                            )}
-                        />
-                    </tr>
-                </tbody>
-            </table>
-            <div class="section-title">WORK <span>EXPERIENCE</span></div>
-
-            <div class="timeline">
+            <div class="section-title">SELECTED <span>IMPACT</span></div>
+            <ul class="impact-list">
                 {
-                    cvData.workExperience.map((item) => (
+                    cvData.positioning.selectedImpact.map((impact) => (
+                        <li>{impact}</li>
+                    ))
+                }
+            </ul>
+
+            <div class="section-title">
+                WORK <span>EXPERIENCE</span>
+            </div>
+            <div class="timeline timeline-continued">
+                {
+                    cvData.workExperience.slice(0, 1).map((item) => (
                         <div class="timeline-item">
                             <div class="timeline-date">
                                 {item.start} - {item.end}
@@ -373,10 +377,17 @@ const externalLinkHtml = (href: string, label: string) =>
                                 </svg>
                             </div>
                             <div class="timeline-content">
-                                {item.title}{" "}
-                                <span class="text-brand font-bold">
+                                <div class="timeline-title">{item.title}</div>
+                                <div class="timeline-company">
                                     {item.company}
-                                </span>
+                                </div>
+                                {item.bullets && item.bullets.length > 0 && (
+                                    <ul class="timeline-bullets">
+                                        {item.bullets.map((b) => (
+                                            <li>{b}</li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
                         </div>
                     ))
@@ -384,19 +395,114 @@ const externalLinkHtml = (href: string, label: string) =>
             </div>
         </div>
 
-        <!-- PAGE 2: Education, Languages, Computer Literacy -->
+        <!-- PAGE 2: Continued Experience -->
         <div class="page">
-            <div class="cv-header font-display">
-                <div class="cv-header-logo">
-                    <CvLogo />
-                </div>
-                <div class="cv-header-title">
-                    / {cvData.header.title}
-                </div>
+            <div class="timeline timeline-continued" style="margin-top: 10px;">
+                {
+                    cvData.workExperience.slice(1, 6).map((item) => (
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                {item.start} - {item.end}
+                            </div>
+                            <div class="timeline-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="4"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                        ry="2"
+                                    />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">{item.title}</div>
+                                <div class="timeline-company">
+                                    {item.company}
+                                </div>
+                                {item.bullets && item.bullets.length > 0 && (
+                                    <ul class="timeline-bullets">
+                                        {item.bullets.map((b) => (
+                                            <li>{b}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- PAGE 3: Older Experience, Education, Skills & Contact -->
+        <div class="page">
+            <div class="timeline" style="margin-top: 10px;">
+                {
+                    cvData.workExperience.slice(6).map((item) => (
+                        <div class="timeline-item">
+                            <div class="timeline-date">
+                                {item.start} - {item.end}
+                            </div>
+                            <div class="timeline-icon">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="10"
+                                    height="10"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="white"
+                                    stroke-width="2.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="4"
+                                        width="18"
+                                        height="18"
+                                        rx="2"
+                                        ry="2"
+                                    />
+                                    <line x1="16" y1="2" x2="16" y2="6" />
+                                    <line x1="8" y1="2" x2="8" y2="6" />
+                                    <line x1="3" y1="10" x2="21" y2="10" />
+                                </svg>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-title">{item.title}</div>
+                                <div class="timeline-company">
+                                    {item.company}
+                                </div>
+                                {item.bullets && item.bullets.length > 0 && (
+                                    <ul class="timeline-bullets">
+                                        {item.bullets.map((b) => (
+                                            <li>{b}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
 
-            <div class="section-title">EXAMS AND <span>EDUCATION</span></div>
-
+            <div class="section-title" style="margin-top: 30px;">
+                EXAMS AND <span>EDUCATION</span>
+            </div>
             <div class="timeline">
                 {
                     cvData.examsAndEducation.map((item) => (
@@ -431,17 +537,17 @@ const externalLinkHtml = (href: string, label: string) =>
                                 </svg>
                             </div>
                             <div class="timeline-content">
-                                {item.title}{" "}
+                                <div class="timeline-title">{item.title}</div>
                                 {item.institution && (
-                                    <span class="text-brand font-bold">
+                                    <div class="timeline-company">
                                         {item.institution}
-                                    </span>
+                                    </div>
                                 )}
                                 {item.bullets && item.bullets.length > 0 && (
                                     <ul class="timeline-bullets">
                                         {item.bullets.map((b) => (
                                             <li>
-                                                <span class="font-bold font-italic">
+                                                <span class="font-bold">
                                                     {b}
                                                 </span>
                                             </li>
@@ -453,118 +559,87 @@ const externalLinkHtml = (href: string, label: string) =>
                     ))
                 }
             </div>
+        </div>
 
-            <div class="section-title" style="margin-top: 20px;">
-                LANGUAGE <span>SKILLS</span>
+        <!-- PAGE 4: Skills & Contact -->
+        <div class="page">
+            <div class="section-title">
+                TECHNICAL CAPABILITIES & <span>LANGUAGES</span>
             </div>
-
-            <div class="skills-container">
+            <div class="compact-skills">
+                <div class="compact-skills-group">
+                    <span class="compact-skills-label">Languages</span>
+                    <span class="compact-skills-items"
+                        >{cvData.compactSkills.languages}</span
+                    >
+                </div>
                 {
-                    cvData.languageSkills.map((skill) => (
-                        <div class="skill-row">
-                            <div class="skill-label">{skill.name}</div>
-                            <div class="skill-bar-wrapper">
-                                <div
-                                    class="skill-bar-fill"
-                                    style={`width: ${skill.level}%;`}
-                                />
-                            </div>
-                            <div class="skill-desc">{skill.label}</div>
+                    cvData.compactSkills.technical.map((tech) => (
+                        <div class="compact-skills-group">
+                            <span class="compact-skills-label">
+                                {tech.category}
+                            </span>
+                            <span class="compact-skills-items">
+                                {tech.items}
+                            </span>
                         </div>
                     ))
                 }
             </div>
 
-            <div class="section-title" style="margin-top: 60px;">
-                COMPUTER <span>LITERACY</span>
+            <div class="section-title" style="margin-top: 40px;">
+                PERSONAL <span>DATA</span>
             </div>
-
-            <div class="skills-container">
-                {
-                    cvData.computerLiteracy.map((skill) => (
-                        <div class="skill-row">
-                            <div class="skill-label">{skill.name}</div>
-                            <div class="skill-bar-wrapper">
-                                <div
-                                    class="skill-bar-fill"
-                                    style={`width: ${skill.level}%;`}
-                                />
-                            </div>
-                            <div class="skill-desc">{skill.label}</div>
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
-
-        <!-- PAGE 3: KNOWLEDGE & SKILLS (Part 1/2) -->
-        <div class="page">
-            <div class="cv-header font-display">
-                <div class="cv-header-logo">
-                    <CvLogo />
+            <div class="personal-data-grid">
+                <div class="data-item">
+                    <span class="data-label">Email</span>
+                    <span
+                        class="data-value"
+                        set:html={externalLinkHtml(
+                            `mailto:${cvData.personalData.EMAIL.replace("mailto:", "")}`,
+                            cvData.personalData.EMAIL.replace("mailto:", ""),
+                        )}
+                    />
                 </div>
-                <div class="cv-header-title">
-                    / {cvData.header.title}
+                <div class="data-item">
+                    <span class="data-label">Website</span>
+                    <span
+                        class="data-value"
+                        set:html={externalLinkHtml(
+                            cvData.personalData.WEBSITE,
+                            cvData.personalData.WEBSITE,
+                        )}
+                    />
                 </div>
-            </div>
-
-            <div class="section-title">KNOWLEDGE & <span>SKILLS</span></div>
-
-            {
-                cvData.knowledgeSkills.slice(0, 3).map((category) => (
-                    <div class="skills-container" style="margin-bottom: 12px;">
-                        <div class="skill-category-tag">
-                            {category.category}
-                        </div>
-                        {category.skills.map((skill) => (
-                            <div class="skill-row">
-                                <div class="skill-label">{skill.name}</div>
-                                <div class="skill-bar-wrapper">
-                                    <div
-                                        class="skill-bar-fill"
-                                        style={`width: ${skill.level}%;`}
-                                    />
-                                </div>
-                                <div class="skill-desc">{skill.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                ))
-            }
-        </div>
-
-        <!-- PAGE 4: KNOWLEDGE & SKILLS (Part 2/2) -->
-        <div class="page">
-            <div class="cv-header font-display">
-                <div class="cv-header-logo">
-                    <CvLogo />
+                <div class="data-item">
+                    <span class="data-label">LinkedIn</span>
+                    <span
+                        class="data-value"
+                        set:html={externalLinkHtml(
+                            cvData.personalData.LINKEDIN,
+                            cvData.personalData.LINKEDIN,
+                        )}
+                    />
                 </div>
-                <div class="cv-header-title">
-                    / {cvData.header.title}
+                <div class="data-item">
+                    <span class="data-label">Phone</span>
+                    <span class="data-value"
+                        >{cvData.personalData["PHONE NUMBER"]}</span
+                    >
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Residence</span>
+                    <span class="data-value"
+                        >{cvData.personalData.RESIDENCE}</span
+                    >
+                </div>
+                <div class="data-item">
+                    <span class="data-label">Nationality</span>
+                    <span class="data-value"
+                        >{cvData.personalData.NATIONALITY}</span
+                    >
                 </div>
             </div>
-
-            {
-                cvData.knowledgeSkills.slice(3).map((category) => (
-                    <div class="skills-container" style="margin-bottom: 12px;">
-                        <div class="skill-category-tag">
-                            {category.category}
-                        </div>
-                        {category.skills.map((skill) => (
-                            <div class="skill-row">
-                                <div class="skill-label">{skill.name}</div>
-                                <div class="skill-bar-wrapper">
-                                    <div
-                                        class="skill-bar-fill"
-                                        style={`width: ${skill.level}%;`}
-                                    />
-                                </div>
-                                <div class="skill-desc">{skill.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                ))
-            }
         </div>
     </body>
 </html>
