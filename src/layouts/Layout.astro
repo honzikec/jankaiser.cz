@@ -1,49 +1,150 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = "7divs - a website worth million words" } = Astro.props;
+const {
+	title,
+	description = "Jan Kaiser — Software creator focused on building high-impact products, robust architecture, and elevating engineering teams. Making technology happen with pragmatism and expertise.",
+} = Astro.props;
+const siteUrl = "https://jankaiser.cz";
+const ogImage = `${siteUrl}/img/og-image.png`;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth snap-y snap-mandatory">
 	<head>
 		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<!-- Primary Meta Tags -->
+		<meta name="title" content={title} />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="canonical" href={siteUrl} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={siteUrl} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={ogImage} />
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<link rel="shortcut icon" href="/img/favicon.ico?v=1.1">
-		<link rel="icon" sizes="16x16 32x32 64x64" href="/img/favicon.ico?v=1.1">
-		<link rel="icon" type="image/png" sizes="196x196" href="/img/favicon-192.png?v=1.1">
-		<link rel="icon" type="image/png" sizes="160x160" href="/img/favicon-160.png?v=1.1">
-		<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96.png?v=1.1">
-		<link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png?v=1.1">
-		<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png?v=1.1">
-		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16.png?v=1.1">
-		<link rel="apple-touch-icon" href="/img/favicon-57.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="114x114" href="/img/favicon-114.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="72x72" href="/img/favicon-72.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="144x144" href="/img/favicon-144.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="60x60" href="/img/favicon-60.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="120x120" href="/img/favicon-120.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="76x76" href="/img/favicon-76.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="152x152" href="/img/favicon-152.png?v=1.1">
-		<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png?v=1.1">
-		<meta name="msapplication-TileColor" content="#d5e2e2">
-		<meta name="msapplication-TileImage" content="/img/favicon-144.png?v=1.1">
-		<meta name="msapplication-config" content="/browserconfig.xml">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+		<link rel="shortcut icon" href="/img/favicon.ico?v=1.1" />
+		<link
+			rel="icon"
+			sizes="16x16 32x32 64x64"
+			href="/img/favicon.ico?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="196x196"
+			href="/img/favicon-192.png?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="160x160"
+			href="/img/favicon-160.png?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="96x96"
+			href="/img/favicon-96.png?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="64x64"
+			href="/img/favicon-64.png?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/img/favicon-32.png?v=1.1"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/img/favicon-16.png?v=1.1"
+		/>
+		<link rel="apple-touch-icon" href="/img/favicon-57.png?v=1.1" />
+		<link
+			rel="apple-touch-icon"
+			sizes="114x114"
+			href="/img/favicon-114.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="72x72"
+			href="/img/favicon-72.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="144x144"
+			href="/img/favicon-144.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="60x60"
+			href="/img/favicon-60.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="/img/favicon-120.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="76x76"
+			href="/img/favicon-76.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="/img/favicon-152.png?v=1.1"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/img/favicon-180.png?v=1.1"
+		/>
+		<meta name="msapplication-TileColor" content="#d5e2e2" />
+		<meta
+			name="msapplication-TileImage"
+			content="/img/favicon-144.png?v=1.1"
+		/>
+		<meta name="msapplication-config" content="/browserconfig.xml" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;800&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-brand-bg text-brand-text antialiased selection:bg-brand-blue selection:text-white">
+	<body
+		class="bg-brand-bg text-brand-text antialiased selection:bg-brand-blue selection:text-white"
+	>
 		<slot />
 	</body>
 </html>
