@@ -5,21 +5,21 @@
         "title": "Senior Software Engineer"
     },
     "positioning": {
-        "summary": "Software engineer with 15+ years of experience building complex, real-world systems across industrial, spatial computing, and data-heavy domains. Operates at a staff level - designing systems across boundaries (APIs, data flows, and user interfaces) and turning ambiguous, high-dimensional problems into usable, high-performance products.Takes ownership of systems end-to-end, contributes to architectural direction, and acts as a technical anchor within teams - unblocking engineers, providing clarity in ambiguous situations, and helping drive pragmatic decisions across product and engineering.",
+        "summary": "Software engineer with 15+ years of experience building complex, real-world systems across industrial, spatial computing, and data-heavy domains. Operates at a staff level - designing systems across boundaries (APIs, data flows, user interfaces) and turning ambiguous, high-dimensional problems into usable, high-performance products. Takes end-to-end ownership from product shaping to production systems, contributes to architectural direction, and acts as a technical anchor within teams - unblocking engineers, driving clarity in ambiguous situations, and enabling pragmatic decision-making across product and engineering.",
         "strengths": [
-            "Designing and building systems at the boundary of backend complexity and user experience",
-            "End-to-end ownership: from shaping product direction to production systems",
-            "Navigating ambiguity and defining structure in poorly defined problem spaces",
-            "Architectural decision-making under real-world constraints (performance, legacy, integrations)",
-            "Mentoring engineers and elevating system-level thinking across teams"
+            "System design (API ↔ UI)",
+            "End-to-end ownership",
+            "Ambiguous problem spaces",
+            "Architecture under constraints",
+            "Mentorship & technical leadership"
         ],
         "selectedImpact": [
-            "Led the evolution of the frontend platform for an industrial plant control system, enabling engineers to compose and operate real-world plant configurations across deployments; contributed to architectural decisions and company-wide initiatives including shared component systems and frontend standards.",
-            "Bootstrapped a spatial computing platform for a San Francisco-based startup as the first engineer, designing and implementing the system from scratch (Babylon.js, React, RxJS) and establishing architecture for real-time, time-based data visualization.",
-            "Drove a major modernization effort for a US-based financial platform, transitioning from a legacy monolith to a Next.js-based system with API layer; handled complex integrations (e-commerce, learning platforms, SSO) while stepping into architecture, client communication, and coordination roles during a critical phase."
+            "Led the evolution of a frontend platform for an industrial plant control system, enabling engineers to compose and operate production configurations across deployments; contributed to architecture and company-wide frontend standards.",
+            "Bootstrapped a spatial computing platform as the first engineer, designing and implementing a real-time system for time-based 3D data visualization (Babylon.js, React, RxJS).",
+            "Drove modernization of a US-based financial platform from a legacy monolith to a Next.js + API architecture, handling complex integrations (e-commerce, learning platforms, SSO) and stabilizing delivery during a critical phase."
         ],
         "recognition": [
-            "Speaker at FrontKon 2024 (biggest Czech frontend conference)",
+            "Speaker at FrontKon 2024 – https://youtu.be/0hSA5blLAOQ (Czech)",
             "Nx Certified Expert"
         ]
     },
@@ -39,10 +39,10 @@
             "title": "Senior Software Engineer",
             "company": "@ This Dot Labs",
             "bullets": [
-                "Delivered across multiple complex client systems (frontend and full-stack), often entering partially defined domains and shaping solutions from exploration to production.",
-                "Owned systems end-to-end, including architecture decisions in environments involving legacy constraints, external integrations, and non-trivial data flows.",
-                "Worked directly with clients to define requirements, challenge assumptions, and align technical decisions with business and product constraints.",
-                "Acted as a high-leverage engineer within teams - unblocking delivery, resolving critical issues, and providing structure in ambiguous situations."
+                "Delivered across multiple complex client systems (frontend and full-stack), often entering partially defined domains and driving solutions from exploration to production.",
+                "Owned end-to-end system design and delivery across environments with legacy constraints, external integrations, and complex data flows.",
+                "Led technical discussions with clients - shaping requirements, challenging assumptions, and aligning architecture with business constraints.",
+                "Acted as a high-leverage engineer within teams, unblocking delivery, resolving critical issues, and providing structure in ambiguous situations."
             ]
         },
         {
@@ -51,9 +51,9 @@
             "title": "Senior Software Engineer",
             "company": "@ Bühler Group",
             "bullets": [
-                "Led the development and evolution of the frontend platform for an industrial plant control system used to configure and operate real-world production environments.",
-                "Designed and maintained a modular ecosystem of Angular packages enabling engineers to compose complex plant configurations across deployments.",
-                "Acted as the primary senior engineer driving architectural decisions, contributing to company-wide initiatives such as shared component systems and frontend standards.",
+                "Led development of a frontend platform for an industrial plant control system used to configure and operate real-world production environments.",
+                "Designed a modular ecosystem of Angular packages enabling engineers to compose complex plant configurations across deployments.",
+                "Acted as the primary senior engineer driving architectural decisions and contributing to company-wide frontend standards and shared component systems.",
                 "Translated complex domain requirements into reliable, usable interfaces, enabling other engineers to build on top of the platform effectively."
             ]
         },
@@ -71,12 +71,12 @@
         {
             "start": "01 / 2014",
             "end": "Present",
-            "title": "Co-founder & Technical Lead",
+            "title": "Co-founder & Technical Lead (part-time)",
             "company": "@ 7divs",
             "bullets": [
                 "Co-founded and built a CMS platform focused on simplicity and standardized frontend architecture for small business websites.",
                 "Designed and implemented the system end-to-end, including content management, configuration-driven architecture, and frontend structure.",
-                "Maintained and evolved the product over time, balancing usability, flexibility, and long-term maintainability."
+                "Continuously evolved the platform, balancing usability, flexibility, and long-term maintainability."
             ]
         },
         {
@@ -135,11 +135,11 @@
         {
             "start": "10 / 2007",
             "end": "Present",
-            "title": "Freelance Software Engineer",
+            "title": "Freelance Software Engineer (part-time)",
             "company": "@ jankaiser.cz",
             "bullets": [
-                "Delivered websites and small applications for clients end-to-end, covering both frontend implementation and visual design.",
-                "Built early experience working directly with clients, shaping requirements, and taking full ownership of projects."
+                "Delivered websites and small applications end-to-end, covering frontend implementation, backend integration, and visual design.",
+                "Worked directly with clients to shape requirements and deliver production-ready systems with full ownership."
             ]
         }
     ],
@@ -174,24 +174,28 @@
         "languages": "Czech (Native), English (Fluent - TOEFL 115/120), French (Fluent)",
         "technical": [
             {
-                "category": "Emerging Tech",
-                "items": "LLMs, AI Integrations, Agentic Workflows, AI Assisted Development"
+                "category": "AI & Applied LLMs",
+                "items": "LLM integrations, agentic workflows, built an automated log analysis agent that triages production logs, investigates anomalies, and reports issues into Slack"
             },
             {
-                "category": "Core & Frameworks",
-                "items": "TypeScript, JavaScript, React, Next.js, Angular, Vue, Astro"
+                "category": "Core (Primary)",
+                "items": "TypeScript, JavaScript, React, Next.js, Angular"
+            },
+            {
+                "category": "Additional Frameworks",
+                "items": "Vue, Astro"
             },
             {
                 "category": "Backend & Cloud",
                 "items": "Node.js, NestJS, Python, PHP, AWS, Vercel, CI/CD, Docker, SQL / NoSQL"
             },
             {
-                "category": "Design & Leadership",
-                "items": "Technical Mentorship, Roadmapping, Cross-functional Communication, UX/UI, Figma"
+                "category": "Architecture & Systems",
+                "items": "System design across API/UI boundaries, domain modeling, pragmatic DDD, modular architectures, integration-heavy systems, legacy modernization"
             },
             {
-                "category": "Architecture & Systems",
-                "items": "System design across API/UI boundaries, domain modeling, pragmatic use of DDD, modular architectures, integration-heavy systems, legacy modernization"
+                "category": "Leadership & Product",
+                "items": "Technical mentorship, roadmapping, cross-functional communication, UX/UI, Figma"
             }
         ]
     }
