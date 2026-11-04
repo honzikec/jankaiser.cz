@@ -19,6 +19,12 @@ const externalLinkHtml = (href: string, label: string) =>
     `<a href="${escapeHtml(href)}" class="text-brand no-underline">${escapeHtml(
         label,
     )}</a>`;
+
+const linkifyTextHtml = (text: string) =>
+    escapeHtml(text).replace(
+        /https?:\/\/[^\s)]+/g,
+        (url) => `<a href="${url}" class="recognition-link">${url}</a>`,
+    );
 ---
 
 <html lang="en">
@@ -122,6 +128,10 @@ const externalLinkHtml = (href: string, label: string) =>
                 display: flex;
                 align-items: center;
                 gap: 5px;
+            }
+            .recognition-badge :global(a.recognition-link) {
+                color: inherit;
+                text-decoration: none;
             }
 
             /* Section Titles */
@@ -325,7 +335,7 @@ const externalLinkHtml = (href: string, label: string) =>
                                 >
                                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                                 </svg>
-                                {item}
+                                <span set:html={linkifyTextHtml(item)} />
                             </span>
                         ))
                     }

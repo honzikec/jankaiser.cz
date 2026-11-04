@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useOnBlueSection } from './ui/useOnBlueSection';
 
 export default function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
-    const { scrollYProgress } = useScroll();
+    const onBlue = useOnBlueSection();
 
     // Prevent body scroll when menu is open
     useEffect(() => {
@@ -17,18 +18,15 @@ export default function Navigation() {
         };
     }, [isOpen]);
 
-    // Adaptive color for the burger icon based on scroll position (matching Logo.tsx)
-    const iconColor = useTransform(
-        scrollYProgress,
-        [0.10, 0.12, 0.56, 0.60, 0.68, 0.72, 0.81, 0.85, 0.90, 0.93],
-        ['#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff', '#ffffff', '#3e3e3f', '#3e3e3f', '#ffffff']
-    );
+    // Adaptive color for the burger icon based on active section background (matching Logo.tsx)
+    const iconColor = onBlue ? '#ffffff' : '#3e3e3f';
 
     const navLinks = [
         { name: "Start", href: "#intro" },
         { name: "How I Work", href: "#story" },
         { name: "Philosophy", href: "#statement" },
         { name: "Clients", href: "#clients" },
+        { name: "Talks", href: "#talks" },
         { name: "Contact", href: "#contact" },
     ];
 
@@ -38,6 +36,9 @@ export default function Navigation() {
             <motion.button
                 onClick={() => setIsOpen(true)}
                 className="fixed top-6 right-6 md:top-10 md:right-10 z-50 p-2 hover:scale-105 transition-transform focus:outline-none"
+                initial={false}
+                animate={{ color: iconColor }}
+                transition={{ duration: 0.25, ease: 'easeOut' }}
                 style={{ color: iconColor }}
                 aria-label="Open Menu"
             >
@@ -82,7 +83,7 @@ export default function Navigation() {
                                     transition: { staggerChildren: 0.1, delayChildren: 0.2 }
                                 }
                             }}
-                            className="flex flex-col items-center gap-6 md:gap-8"
+                            className="flex flex-col items-center gap-5 md:gap-7"
                         >
                             {navLinks.map((link) => (
                                 <motion.a
@@ -109,7 +110,7 @@ export default function Navigation() {
                                     hidden: { opacity: 0, y: 20 },
                                     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
                                 }}
-                                className="mt-8 px-8 py-4 bg-brand-blue text-white text-xl md:text-2xl font-bold rounded-full hover:bg-brand-blue/90 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                                className="mt-6 md:mt-8 px-8 py-4 bg-brand-blue text-white text-xl md:text-2xl font-bold rounded-full hover:bg-brand-blue/90 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                             >
                                 Download CV
                             </motion.a>
